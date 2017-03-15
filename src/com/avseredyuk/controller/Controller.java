@@ -17,7 +17,7 @@ import java.util.stream.IntStream;
  */
 public class Controller {
     private static final String[] COMMANDS_ARRAY =
-            {"list", "add", "coin", "reset"};
+            {"list", "add", "coin", "checkout", "reset"};
     private static final int[] COIN_VALUES =
             {1, 5, 10, 25, 50};
 
@@ -59,13 +59,6 @@ public class Controller {
                             if (IntStream.of(COIN_VALUES).anyMatch(x -> x == coin)) {
                                 terminal.addCoin(coin);
                                 view.showOrder(terminal.getOrder());
-
-//                                order.addCoin(coin);
-//                                System.out.println(String.format(STRING_FORMAT_COINS_SUM,
-//                                        order.getCoins().stream()
-//                                                .mapToInt(Integer::intValue)
-//                                                .sum()));
-
                             } else {
                                 throw new NumberFormatException();
                             }
@@ -73,6 +66,10 @@ public class Controller {
                             view.showIllegalInput();
                         }
                     }
+                } else if (params[0].equals(COMMANDS_ARRAY[3])) {
+                    //todo checkout
+                } else if (params[0].equals(COMMANDS_ARRAY[4])) {
+                    terminal.resetOrder();
                     /*
                 } else if (params[0].equals(COMMANDS_ARRAY[4])) {
                     if (order.getCoins().size() > 1) {

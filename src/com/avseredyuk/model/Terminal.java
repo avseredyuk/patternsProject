@@ -50,6 +50,10 @@ public class Terminal {
         order.addCoin(coin);
     }
 
+    public void resetOrder() {
+        order = new Order();
+    }
+
     public Order getOrder() {
         return order;
     }
