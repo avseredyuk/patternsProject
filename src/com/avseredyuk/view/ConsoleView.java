@@ -77,7 +77,7 @@ public class ConsoleView {
                     p.getPrice(),
                     p.getName())));
         } else {
-            System.out.println(String.format(STRING_FORMAT_ERROR, STRING_NO_ITEMS));
+            System.out.println(STRING_NO_ITEMS);
         }
 
         int coinsTotal = order.getCoinsTotal();
