@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Main {
     public Main() {
-        View view = new ConsoleView();
+        ConsoleView view = new ConsoleView();
         Terminal terminal = new Terminal(view);
         Controller controller = new Controller(terminal, view);
         controller.run();
