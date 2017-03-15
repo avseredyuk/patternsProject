@@ -1,13 +1,8 @@
 package com.avseredyuk;
 
 import com.avseredyuk.controller.Controller;
-import com.avseredyuk.model.Product;
 import com.avseredyuk.model.Terminal;
 import com.avseredyuk.view.ConsoleView;
-import com.avseredyuk.view.View;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Anton_Serediuk on 3/6/2017.

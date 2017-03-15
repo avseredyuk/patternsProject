@@ -15,9 +15,11 @@ public class ConsoleView {
     private static final String STRING_FORMAT_CART = "\t\t%s\t\t%s";
     private static final String STRING_FORMAT_COIN = "\t\t%d";
     private static final String PRODUCTS_LIST_HEADER = "\tID\t\tPRICE\tNAME";
+    private static final String STRING_NO_ITEMS = "\t\t<No items>";
     private static final String STRING_FORMAT_ERROR = "Error happened: %s";
     private static final String STRING_HEADER_ITEMS_IN_CART = "\tItems in cart:";
     private static final String STRING_HEADER_INSERTED_COINS = "\tInserted coins:";
+    private static final String STRING_HEADER_TOTAL_COINS = "\tTotal coins:";
     private static final String STRING_FORMAT_ADDED = "Added: %s";
     private static final String STRING_FORMAT_BUCKET_ITEM = " * %s";
     private static final String STRING_FORMAT_COINS_SUM = "  Coins sum: %d";
@@ -53,21 +55,35 @@ public class ConsoleView {
     }
 
     public void showOrder(Order order) {
-        System.out.println(STRING_HEADER_ITEMS_IN_CART);
-        order.getCart().forEach(p -> {
-            System.out.println(String.format(STRING_FORMAT_CART,
-                    p.getPrice(),
-                    p.getName()));
-        });
-        System.out.println(STRING_HEADER_INSERTED_COINS);
-        order.getCoins().forEach(i -> {
-            System.out.println(String.format(STRING_FORMAT_COIN, i));
-        });
-    }
+        List<Product> productList = order.getCart();
+        List<Integer> coinList = order.getCoins();
 
-//    public void showProductAdded(Product product) {
-//        System.out.println(String.format(STRING_FORMAT_ADDED, product.getName()));
-//    }
+        System.out.println(STRING_HEADER_ITEMS_IN_CART);
+        if (productList.size() > 0) {
+            productList.forEach(p -> {
+                System.out.println(String.format(STRING_FORMAT_CART,
+                        p.getPrice(),
+                        p.getName()));
+            });
+        } else {
+            System.out.println(STRING_NO_ITEMS);
+        }
+
+        System.out.println(STRING_HEADER_INSERTED_COINS);
+        if (coinList.size() > 0) {
+            coinList.forEach(i -> {
+                System.out.println(String.format(STRING_FORMAT_COIN, i));
+            });
+            System.out.println(STRING_HEADER_TOTAL_COINS);
+            int coinsSum = order.getCoins().stream()
+                    .mapToInt(i -> i)
+                    .sum();
+            System.out.println(String.format(STRING_FORMAT_COIN, coinsSum));
+        } else {
+            System.out.println(STRING_NO_ITEMS);
+        }
+
+    }
 
 
 }

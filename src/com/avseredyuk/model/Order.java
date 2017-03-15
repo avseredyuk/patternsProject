@@ -7,8 +7,8 @@ import java.util.List;
  * Created by Anton_Serediuk on 3/6/2017.
  */
 public class Order {
-    List<Product> cart = new ArrayList<>();
-    List<Integer> coins = new ArrayList<>();
+    private List<Product> cart = new ArrayList<>();
+    private List<Integer> coins = new ArrayList<>();
 
     public void addProduct(Product p) {
         cart.add(p);
@@ -19,13 +19,11 @@ public class Order {
     }
 
     public List<Product> getCart() {
-        return cart;
+        return new ArrayList<>(cart);
     }
 
     public List<Integer> getCoins() {
-        return coins;
+        return new ArrayList<>(coins);
     }
-
-
 
 }

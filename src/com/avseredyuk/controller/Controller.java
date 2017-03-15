@@ -1,14 +1,8 @@
 package com.avseredyuk.controller;
 
-import com.avseredyuk.model.Product;
 import com.avseredyuk.model.Terminal;
 import com.avseredyuk.view.ConsoleView;
-import com.avseredyuk.view.View;
 
-import java.io.Console;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
@@ -17,7 +11,7 @@ import java.util.stream.IntStream;
  */
 public class Controller {
     private static final String[] COMMANDS_ARRAY =
-            {"list", "add", "coin", "checkout", "reset"};
+            {"list", "add", "coin", "checkout", "reset", "show"};
     private static final int[] COIN_VALUES =
             {1, 5, 10, 25, 50};
 
@@ -67,26 +61,16 @@ public class Controller {
                         }
                     }
                 } else if (params[0].equals(COMMANDS_ARRAY[3])) {
-                    //todo checkout
+                    terminal.checkout();
                 } else if (params[0].equals(COMMANDS_ARRAY[4])) {
                     terminal.resetOrder();
-                    /*
-                } else if (params[0].equals(COMMANDS_ARRAY[4])) {
-                    if (order.getCoins().size() > 1) {
-                        System.out.println(HERE_IS_YOUR_COINS);
-                        for (Integer coin : order.getCoins()) {
-                            System.out.println(String.format(STRING_FORMAT_COIN_ITEM, coin));
-                        }
-                    } else {
-                        System.out.println(NO_INPUT_COINS);
-                    }
-                    order = new Order();*/
+                    view.showOrder(terminal.getOrder());
+                } else if (params[0].equals(COMMANDS_ARRAY[5])) {
+                    view.showOrder(terminal.getOrder());
                 } else {
                     view.showNoSuchCommand();
                 }
             }
-
-
         }
     }
 

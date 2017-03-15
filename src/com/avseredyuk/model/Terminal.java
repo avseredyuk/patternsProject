@@ -1,9 +1,7 @@
 package com.avseredyuk.model;
 
 import com.avseredyuk.view.ConsoleView;
-import com.avseredyuk.view.View;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -44,6 +42,10 @@ public class Terminal {
         } else {
             throw new NumberFormatException();
         }
+    }
+
+    public void checkout() {
+        //todo some logic here
     }
 
     public void addCoin(int coin) {
