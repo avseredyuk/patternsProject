@@ -24,14 +24,8 @@ public class ConsoleView {
     private static final String STRING_HEADER_TOTAL_COINS = "\tTotal coins:";
     private static final String STRING_HEADER_CHANGE = "\tHere is your change:";
     private static final String STRING_HEADER_CHECKEDOUT_ORDER = "\tHere is your products:";
-    private static final String STRING_FORMAT_ADDED = "Added: %s";
-    private static final String STRING_FORMAT_BUCKET_ITEM = " * %s";
-    private static final String STRING_FORMAT_COINS_SUM = "  Coins sum: %d";
-    private static final String STRING_FORMAT_COIN_ITEM = "Coin %d";
     private static final String COMMAND_NOT_FOUND = "Command not found";
     private static final String ILLEGAL_INPUT = "Illegal input";
-    private static final String NO_INPUT_COINS = "There is no input coins";
-    private static final String HERE_IS_YOUR_COINS = "Here is your coins : ";
     private static final String STRING_WELCOME = "Welcome!";
 
     public void showGreeting() {
