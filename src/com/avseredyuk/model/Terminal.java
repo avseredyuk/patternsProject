@@ -2,14 +2,14 @@ package com.avseredyuk.model;
 
 import com.avseredyuk.view.ConsoleView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * Created by Anton_Serediuk on 3/6/2017.
  */
 public class Terminal {
+    public static final int[] COIN_VALUES =
+            {1, 5, 10, 25, 50};
     private ConsoleView view;
     private Order order = new Order();
 
@@ -45,7 +45,33 @@ public class Terminal {
     }
 
     public void checkout() {
-        //todo some logic here
+        int coinsTotal = order.getCoinsTotal();
+        int orderTotal = order.getOrderTotal();
+        if (coinsTotal >= orderTotal) {
+            view.showCheckout(order);
+            int change = coinsTotal - orderTotal;
+            List<Integer> changeCoins = getChangeCoins(change);
+            view.showChange(changeCoins);
+            resetOrder();
+        } else {
+            view.showNotEnoughCoins();
+        }
+    }
+
+    private List<Integer> getChangeCoins(int change) {
+        List<Integer> resultList = new ArrayList<>();
+        int[] sortedCoins = Arrays.stream(COIN_VALUES)
+                .boxed()
+                .sorted((a, b) -> b.compareTo(a))
+                .mapToInt(i -> i)
+                .toArray();
+        for (int i = 0; i < sortedCoins.length; i++) {
+            while (change >= sortedCoins[i]) {
+                change -= sortedCoins[i];
+                resultList.add(sortedCoins[i]);
+            }
+        }
+        return resultList;
     }
 
     public void addCoin(int coin) {
@@ -60,7 +86,4 @@ public class Terminal {
         return order;
     }
 
-//    public void resetOrder() {
-//
-//    }
 }

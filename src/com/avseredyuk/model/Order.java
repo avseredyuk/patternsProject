@@ -26,4 +26,16 @@ public class Order {
         return new ArrayList<>(coins);
     }
 
+    public int getCoinsTotal() {
+        return getCoins().stream()
+                .mapToInt(i -> i)
+                .sum();
+    }
+
+    public int getOrderTotal() {
+        return getCart().stream()
+                .mapToInt(Product::getPrice)
+                .sum();
+    }
+
 }

@@ -12,8 +12,6 @@ import java.util.stream.IntStream;
 public class Controller {
     private static final String[] COMMANDS_ARRAY =
             {"list", "add", "coin", "checkout", "reset", "show"};
-    private static final int[] COIN_VALUES =
-            {1, 5, 10, 25, 50};
 
     private Terminal terminal;
     private ConsoleView view;
@@ -50,7 +48,7 @@ public class Controller {
                             String coinString = params[1];
                             int coin = Integer.valueOf(coinString);
 
-                            if (IntStream.of(COIN_VALUES).anyMatch(x -> x == coin)) {
+                            if (IntStream.of(Terminal.COIN_VALUES).anyMatch(x -> x == coin)) {
                                 terminal.addCoin(coin);
                                 view.showOrder(terminal.getOrder());
                             } else {
