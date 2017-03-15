@@ -4,8 +4,6 @@ import com.avseredyuk.model.Order;
 import com.avseredyuk.model.Product;
 
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  * Created by Anton_Serediuk on 3/14/2017.
